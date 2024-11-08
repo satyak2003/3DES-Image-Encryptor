@@ -7,30 +7,30 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-// Ensure "uploads" folder exists
+
 const uploadDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
 }
 
-// Configure Multer for file uploads
+//multer
 const upload = multer({ dest: uploadDir });
 
-// Serve static files (HTML, CSS, JS)
+
 app.use(express.static('public'));
 app.use(express.json()); // For JSON requests (key handling)
 
-// Landing Page Route
+//index
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
-// Encryption Page Route
+// Encryption Page
 app.get('/encrypt', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'encrypt.html'));
 });
 
-// Generate Key Route
+// Generate Key
 app.get('/generate-key', (req, res) => {
   const key = crypto.randomBytes(24).toString('hex'); // Generate 24-byte key
   res.json({ key });
@@ -52,7 +52,7 @@ app.post('/encrypt', upload.single('image'), (req, res) => {
   res.json({ filePath: `/download/encrypted_image.enc` });
 });
 
-// Download Route for Encrypted File
+// Download for Encrypted File
 app.get('/download/:filename', (req, res) => {
   const filePath = path.join(uploadDir, req.params.filename);
   res.download(filePath, (err) => {
@@ -61,7 +61,7 @@ app.get('/download/:filename', (req, res) => {
   });
 });
 
-// Decryption Page Route
+// Decryption Page
 app.get('/decrypt', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'decrypt.html'));
 });
