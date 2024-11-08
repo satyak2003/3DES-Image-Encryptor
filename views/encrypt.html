@@ -8,16 +8,16 @@
 <body>
   <h1>Encrypt Image</h1>
   <h6>Project By - 25CSE_38</h6>
-  <div id="logo-top" class="enclogo">
-    <img src="/logo.jpg" alt="toplogo">
+  <div id="logo-top">
+    <a href="/"><img class="enclogo" src="/logo.jpg" alt="toplogo"></a>
   </div>
   <button id="generateKey">Generate Key</button>
   <p>Key: <span id="keyDisplay">None</span></p>
 
   <form id="encryptForm" enctype="multipart/form-data">
-    <input type="file" name="image" accept="image/*" required><br><br>
-    <input type="text" id="encryptionKey" placeholder="Enter or Generate Key" required><br><br>
-    <button type="button" id="encryptButton">Encrypt</button>
+    <button style="width: 70%; text-align: center; margin-left: 14%;"><input type="file" name="image" accept="image/*" required></button><br><br>
+    <input style="width: 70%; text-align: center; margin-left: 37px;" type="text" id="encryptionKey" placeholder="Enter or Generate Key" required><br><br>
+    <button style="margin-left: 33%;" type="button" id="encryptButton">Encrypt</button>
   </form>
 
   <button id="downloadButton" style="display:none;">Download Encrypted Image</button>

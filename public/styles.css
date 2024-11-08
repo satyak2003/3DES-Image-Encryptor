@@ -1,4 +1,3 @@
-/* General body styles */
 body {
     font-family: Poppins, sans-serif;
     background-color: beige;
@@ -10,7 +9,7 @@ body {
     justify-content: center;
     height: 100vh;
 }  
-/* Heading styles */
+
 h1 {
     color: #000000;
     margin-bottom: 20px;
@@ -27,9 +26,8 @@ h1 {
 
 .enclogo{
     display: flex;
-    width: 5%;
-    height: 5%;
-    padding-right: 20px;
+    width: 25%;
+    padding-right: 100px;
     position: fixed;
     top: 10px;
     left: 10px;  
@@ -42,9 +40,8 @@ h6{
     right: 10px;
 }
 
-/* Button styles */
 button {
-    background-color: #007bff; /* Bootstrap primary color */
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
@@ -55,12 +52,11 @@ button {
     transition: background-color 0.3s;
 }
 
-/* Button hover effect */
 button:hover {
-    background-color: #0056b3; /* Darker shade for hover */
+    background-color: #0056b3;
 }
 
-/* Responsive styles */
+
 @media (max-width: 600px) {
     body {
         flex-direction: column;
@@ -74,54 +70,54 @@ button:hover {
 }
 
 
-/* Lock Overlay Styles */
 .lock-overlay {
-    display: none; /* Hidden initially */
+    display: none; 
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.36); /* Optional background tint */
-    z-index: -10; /* Adjust z-index to ensure it's above background but behind buttons */
+    background: rgba(0, 0, 0, 0.36);
+    z-index: -10;
     align-items: center;
     justify-content: center;
-    opacity: 0; /* Start with opacity 0 for fade effect */
-    transition: opacity 5s ease; /* Add transition for smooth fading */
+    opacity: 0;
+    transition: opacity 5s ease;
 }
 
 .lock-overlay.show-lock-overlay {
-    display: flex; /* Show overlay only when this class is added */
+    display: flex; 
     opacity: 1;
 }
 
 .lock-gif {
-    width: 100%; /* Adjust size as needed */
+    width: 100%; 
     height: auto;
 }
 
-/* Lock Overlay Styles */
+
 .lock-overlay1 {
-    display: none; /* Hidden initially */
+    display: none; 
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: none; /* Optional background tint */
-    z-index: -10; /* Adjust z-index to ensure it's above background but behind buttons */
+    background: none;
+    z-index: -10; 
     align-items: center;
     justify-content: center;
-    opacity: 0; /* Start with opacity 0 for fade effect */
-    transition: opacity 0.5s ease; /* Add transition for smooth fading */
+    opacity: 0;
+    transition: opacity 0.5s ease; 
 }
 
 .lock-overlay1.show-lock-overlay1 {
-    display: flex; /* Show overlay only when this class is added */
+    display: flex;
     opacity: 1;
 }
 
 .lock-gif1 {
-    width: 100%; /* Adjust size as needed */
+    width: 100%;
     height: auto;
 }
+

@@ -7,7 +7,6 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-
 const uploadDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
@@ -18,19 +17,19 @@ const upload = multer({ dest: uploadDir });
 
 
 app.use(express.static('public'));
-app.use(express.json()); // For JSON requests (key handling)
+app.use(express.json()); 
 
-//index
+// Landing Page Route
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
-// Encryption Page
+// Encryption Page Route
 app.get('/encrypt', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'encrypt.html'));
 });
 
-// Generate Key
+// Generate Key Route
 app.get('/generate-key', (req, res) => {
   const key = crypto.randomBytes(24).toString('hex'); // Generate 24-byte key
   res.json({ key });
@@ -47,21 +46,21 @@ app.post('/encrypt', upload.single('image'), (req, res) => {
   const encryptedPath = path.join(uploadDir, 'encrypted_image.enc');
   fs.writeFileSync(encryptedPath, encryptedData);
 
-  fs.unlinkSync(req.file.path); // Clean up uploaded file
+  fs.unlinkSync(req.file.path);
 
   res.json({ filePath: `/download/encrypted_image.enc` });
 });
 
-// Download for Encrypted File
+// Download Route
 app.get('/download/:filename', (req, res) => {
   const filePath = path.join(uploadDir, req.params.filename);
   res.download(filePath, (err) => {
     if (err) console.error('Download error:', err);
-    fs.unlinkSync(filePath); // Clean up after download
+    fs.unlinkSync(filePath);
   });
 });
 
-// Decryption Page
+// Decryption Page Route
 app.get('/decrypt', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'decrypt.html'));
 });
@@ -78,7 +77,7 @@ app.post('/decrypt', upload.single('image'), (req, res) => {
     const decryptedPath = path.join(uploadDir, 'decrypted_image.png');
     fs.writeFileSync(decryptedPath, decryptedData);
 
-    fs.unlinkSync(req.file.path); // Clean up uploaded file
+    fs.unlinkSync(req.file.path);
 
     res.json({ filePath: `/download/decrypted_image.png` });
   } catch (error) {
@@ -87,7 +86,7 @@ app.post('/decrypt', upload.single('image'), (req, res) => {
 });
 
 
-// Start the server
+//starting app.js
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
