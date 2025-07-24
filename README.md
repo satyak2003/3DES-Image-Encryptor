@@ -41,7 +41,7 @@ npm install
 
 3.**Start the server:**
 ```bash
-node server.js
+node app.js
 ```
 
 4.**Access the web app:**
